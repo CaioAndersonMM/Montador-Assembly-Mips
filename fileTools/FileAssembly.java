@@ -13,7 +13,7 @@ public class FileAssembly
 {
     private String fileName;
     private FileReader file;
-    final int intialAddress = 4194304; // endereço de memoria inicial do assembly equivalente a 0x00400000
+    final int initialAddress = 4194304; // endereço de memoria inicial do assembly equivalente a 0x00400000
 
     public FileAssembly(String fileName) throws Exception
     {

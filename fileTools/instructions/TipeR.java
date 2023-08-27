@@ -12,11 +12,13 @@ public class TipeR
     static public String translateInstruction(String instruction) throws IOException
     {
         String opcode, rs, rt, rd, sa, function;
+
         String[] words = instruction.split("[, ]+", 5);
         if(words.length > 3)
         {
             Instructions Tr = new Instructions();
-            System.out.println(Tr.getInstructionsR());
+            
+            
         }
 
        return ""; 
