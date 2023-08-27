@@ -9,7 +9,9 @@ import java.io.IOException;
 
 class Instructions
 {
-    private Map <String, Map<String, String>> instructions;
+    private Map <String, Map<String, String>> instructionsR;
+    private Map <String, Map<String, String>> instructionsI;
+    private Map <String, Map<String, String>> instructionsJ;
     private Map <String, String> subInstructions;
 
     public Instructions() throws IOException
@@ -20,12 +22,12 @@ class Instructions
 
     public Map <String, Map<String, String>> getInstructionsR()
     {
-        return this.instructions;
+        return this.instructionsR;
     }
 
     public void setInstructuionsR() throws IOException
     {
-        instructions = new HashMap<String, Map<String, String>>();
+        instructionsR = new HashMap<String, Map<String, String>>();
 
         try {
             String line;
@@ -36,11 +38,17 @@ class Instructions
             while((line = bf.readLine()) != null)
             {
                 subInstructions = new HashMap<String, String>();
-                words = line.split(";", 3);
+                words = line.split(";", 10);
                 subInstructions.put("opcode", words[1]);
                 subInstructions.put("function", words[2]);
-                instructions.put(words[0], subInstructions);
+                subInstructions.put("rs", words[3]);
+                subInstructions.put("rt", words[4]);
+                subInstructions.put("rd", words[5]);
+                subInstructions.put("sa", words[6]);
+                this.instructionsR.put(words[0], subInstructions);
             }
+
+            bf.close();
         } catch (FileNotFoundException e) {
            System.err.println(e.getMessage());
         }
