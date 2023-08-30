@@ -16,7 +16,8 @@ public class Assembly
             BufferedReader bf = new BufferedReader(f.getFile());
             Translator tr = new Translator(labels);
 
-            int i = 0;
+            int i = 1;
+
             while((line = bf.readLine()) != null)
             {
                 System.out.println(tr.translateInstruction(line, i));

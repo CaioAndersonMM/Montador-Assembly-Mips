@@ -85,7 +85,8 @@ public class Translator
         opcode = command.get("opcode");
         rs = command.get("rs").contains("rs") ? "00000" : words[Integer.valueOf(command.get("rs"))];
         rt = command.get("rt").contains("rt") ? "00000" : words[Integer.valueOf(command.get("rt"))];
-        immediate = this.labels.get(words[Integer.valueOf(command.get("const"))]) - (initialAddress + 4 * lineCounter);
+        immediate = command.get("const").contains("const") ? 0 : (this.labels.get(words[Integer.valueOf(command.get("const"))]) - (initialAddress + 4 * lineCounter)) / 4;
+        
         // conversão para binario
         rs = binaryConversor.registerToBinary(rs);
         rt = binaryConversor.registerToBinary(rt);
