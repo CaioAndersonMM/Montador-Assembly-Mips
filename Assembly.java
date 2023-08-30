@@ -5,7 +5,7 @@ import fileTools.FileAssembly;
 import fileTools.instructions.*;
 import fileTools.instructions.BinaryConversor;
 
-public class Assembly 
+public class Assembly
 {
     public static void main(String []args) {
         try {

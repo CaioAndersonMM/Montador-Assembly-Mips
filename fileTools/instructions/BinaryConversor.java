@@ -58,7 +58,7 @@ public class BinaryConversor
 
     private static boolean isInteger(String str) 
     {
-        return str != null && str.matches("[0-9]*");
+        return str != null && str.matches("-?[0-9]*");
     }
 
     public String decimalToBinary(int number, int lenght) 
