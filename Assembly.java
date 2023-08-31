@@ -5,9 +5,8 @@ import fileTools.FileAssembly;
 import fileTools.instructions.*;
 import fileTools.instructions.BinaryConversor;
 
-public class Assembly
-{
-    public static void main(String []args) {
+public class Assembly {
+    public static void main(String[] args) {
         try {
             String line;
             FileAssembly f = new FileAssembly("arquivo.asm");
@@ -18,9 +17,9 @@ public class Assembly
 
             int i = 1;
 
-            while((line = bf.readLine()) != null)
-            {
-                System.out.println(tr.translateInstruction(line, i));
+            while ((line = bf.readLine()) != null) {
+                if (!line.isEmpty())
+                    System.out.println(tr.translateInstruction(line, i));
                 i++;
             }
 
@@ -29,5 +28,3 @@ public class Assembly
         }
     }
 }
-
-
