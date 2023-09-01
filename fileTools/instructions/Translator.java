@@ -120,9 +120,8 @@ public class Translator {
         String pc = Integer.toString(initialAddress + 4 * lineCounter);
         pc = binaryConversor.decimalToBinary(Integer.valueOf(pc), 12);
 
-        int pcTopBits = 0b0010; // Exemplo dos 4 bits mais altos do PC
-
-        System.out.println(pc);
+        // Pegar Bits Altos de PC (?)
+        // System.out.println(pc);
 
         // Não sei como retornar o address !!!
         return opcode + pc;

@@ -1,9 +1,12 @@
 
 import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Map;
 import fileTools.FileAssembly;
 import fileTools.instructions.*;
-import fileTools.instructions.BinaryConversor;
 
 public class Assembly {
     public static void main(String[] args) {
@@ -17,10 +20,32 @@ public class Assembly {
 
             int i = 1;
 
+            ArrayList<String> instructions = new ArrayList<>(); // pegar instruções do arquivos
+
             while ((line = bf.readLine()) != null) {
-                if (!line.isEmpty())
+                if (!line.isEmpty()) {
                     System.out.println(tr.translateInstruction(line, i));
+                    instructions.add(tr.translateInstruction(line, i));
+                }
                 i++;
+            }
+
+            i = 1;
+            String fileName = "output.hex";
+            BinaryConversor binaryConversor = new BinaryConversor();
+
+            try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
+                writer.println("v2.0 raw");
+                for (String instruction : instructions) {
+                    writer.print(binaryConversor.binaryToHexa(instruction) + " ");
+                    if (i >= 4) {
+                        writer.print("\n");
+                        i = 0;
+                    }
+                    i++;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
         } catch (Exception e) {
