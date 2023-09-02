@@ -23,7 +23,8 @@ public class Assembly {
             ArrayList<String> instructions = new ArrayList<>(); // pegar instruções do arquivos
 
             while ((line = bf.readLine()) != null) {
-                if (!line.isEmpty()) {
+                // Se linha não for vazia e não tiver nada após o label
+                if (!line.isEmpty() && !line.substring(line.lastIndexOf(":") + 1).trim().isEmpty()) {
                     System.out.println(tr.translateInstruction(line, i));
                     instructions.add(tr.translateInstruction(line, i));
                 }
