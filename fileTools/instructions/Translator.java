@@ -88,8 +88,7 @@ public class Translator {
 
         if (labels.containsKey(address)) {
             address = Integer.toString(
-                    (this.labels.get(words[Integer.valueOf(command.get("const"))]) - (initialAddress + 4 * lineCounter))
-                            / 4);
+                    (this.labels.get(words[Integer.valueOf(command.get("const"))]) -  lineCounter));
         }
 
         // conversão para binario
@@ -103,27 +102,16 @@ public class Translator {
     private String translateJ(String[] words, Map<String, String> command, int lineCounter)
             throws InvalidInstructionException {
         BinaryConversor binaryConversor = new BinaryConversor(); // Não precisa
-        String opcode, address;
+        String opcode, address, pc;
 
         opcode = command.get("opcode");
-        address = command.get("address").contains("address") ? "0" : words[Integer.valueOf(command.get("address"))];
+        address = words[Integer.valueOf(command.get("address"))];
 
         if (labels.containsKey(address)) {
-            address = Integer.toString(
-                    (this.labels.get(words[Integer.valueOf(command.get("address"))])
-                            - (initialAddress + 4 * lineCounter))
-                            / 4);
+            address = Integer.toString((this.labels.get(address)));
         }
 
-        address = binaryConversor.decimalToBinary(Integer.valueOf(address), 16);
-
-        String pc = Integer.toString(initialAddress + 4 * lineCounter);
-        pc = binaryConversor.decimalToBinary(Integer.valueOf(pc), 12);
-
-        // Pegar Bits Altos de PC (?)
-        // System.out.println(pc);
-
-        // Não sei como retornar o address !!!
-        return opcode + pc;
+        address = binaryConversor.decimalToBinary(Integer.valueOf(initialAddress + 4 * Integer.valueOf(address)) / 4, 26);
+        return opcode + address;
     }
 }

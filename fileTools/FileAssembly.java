@@ -57,7 +57,7 @@ public class FileAssembly
             while ((line = bf.readLine()) != null) {
                 if ((line.contains(":"))) {
                     labelName = line.split(":")[0];
-                    adresses.put(labelName, initialAddress + 4 * lineCounter);       
+                    adresses.put(labelName, lineCounter);       
                 }
                 lineCounter++;
             }      
