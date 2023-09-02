@@ -5,14 +5,21 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map;
+
+import fileOperations.CopyFileToProject;
 import fileTools.FileAssembly;
 import fileTools.instructions.*;
 
 public class Assembly {
     public static void main(String[] args) {
+        // Copia arquivo para o projeto
+        CopyFileToProject copyFile = new CopyFileToProject();
+        copyFile.main(args);
+
         try {
             String line;
-            FileAssembly f = new FileAssembly("arquivo.asm");
+            // FileAssembly f = new FileAssembly("arquivo.asm");
+            FileAssembly f = new FileAssembly("files/instrucoes.asm");
             Map<String, Integer> labels = f.countLinesWithLabels();
             f.fileRead();
             BufferedReader bf = new BufferedReader(f.getFile());
