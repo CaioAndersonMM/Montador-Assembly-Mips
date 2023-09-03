@@ -1,5 +1,7 @@
 package fileTools.instructions;
 
+import java.math.BigInteger;
+
 import exceptions.InvalidInstructionException;
 
 public class BinaryConversor {
@@ -70,8 +72,8 @@ public class BinaryConversor {
     }
 
     public String binaryToHexa(String number) {
-        int decimal = Integer.parseInt(number, 2);
-        String hexaRepresentation = Integer.toHexString(decimal).toUpperCase();
+        BigInteger decimal = new BigInteger(number, 2); // Para caber mais
+        String hexaRepresentation = decimal.toString(16).toUpperCase();
         return hexaRepresentation;
     }
 }
