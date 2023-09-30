@@ -23,12 +23,20 @@ L2: addi $t1, $s3, 7
 beq $t0, $t1, L1
 j L2
 
+`````
 Após Executar o que será gerado é:
+`````
 
 v2.0 raw
 012a4020 21490007 1109fffd 08000001
 
 `````
+## Equipe de Desenvolvimento
+
+- [CAIO ANDERSON MARTINS MOURA](https://github.com/CaioAndersonMM)
+- [JOAO PEDRO PEREIRA FRUTUOSO](https://github.com/PedroPereiraJPPF)
+
+
 ## Formato do Arquivo de Saída
 O arquivo de saída (.hex) segue o formato "v2.0 raw". Cada instrução é representada em hexadecimal e separada por um espaço. O montador agrupa até 4 instruções por linha, para facilitar a visualização.
 
